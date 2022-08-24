@@ -14,10 +14,10 @@ Actualmente estamos **buscando voluntarios**. Checa los issues con la etiqueta [
 
 ## Sobre la aplicación
 
-**Versión de ruby**: 3.1.2
+**Versión de ruby**: 3.1.2  
 **Versión de rails**: >= 7.0.3.1
 
-1. Clona el repositorio e instala las dependencias  
+### 1. Clona el repositorio e instala las dependencias  
 
 (todos los comandos que empiecen con `$` van en tu terminal. No digites el `$` 🥸
 
@@ -27,7 +27,7 @@ $ cd proyectos-app
 $ bundle install
 ```
 
-2. Creando la base de datos
+### 2. Creando la base de datos
 
 **Requiere**: Postgresql versión 10 o superior
 
@@ -54,7 +54,7 @@ database_username: tu_usuario # el que creaste en postgres
 database_password: tu_contraseña # la que creaste en postgres
 ```
 
-3. Inicialización de la base de datos.
+### 3. Inicialización de la base de datos.
 
 Ahora corre el script para crear la base de datos y todas sus migraciones:
 
