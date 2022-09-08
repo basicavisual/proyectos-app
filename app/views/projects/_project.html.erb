@@ -1,6 +1,6 @@
 <div id="<%= dom_id project %>">
   <p>
-    <strong>Title:</strong>
+    <strong>Project Title:</strong>
     <%= project.title %>
   </p>
 
@@ -8,5 +8,15 @@
     <strong>Description:</strong>
     <%= project.description %>
   </p>
+
+  <h2>Phases</h2>
+  <% for phase in project.phases %>
+      <ul>
+        <li><%= phase.name %> | </li>
+    </ul>
+  <% end %>
+
+  
+
 
 </div>

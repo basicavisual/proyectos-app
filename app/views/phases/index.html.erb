@@ -6,9 +6,9 @@
   <% @phases.each do |phase| %>
     <%= render phase %>
     <p>
-      <%= link_to "Show this phase", phase %>
+      <%= link_to "Show this phase", project_phase_path(@project, phase) %>
     </p>
   <% end %>
 </div>
 
-<%= link_to "New phase", new_phase_path %>
+<%= link_to "New phase", new_project_phase_path %>

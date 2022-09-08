@@ -3,8 +3,8 @@
 <%= render @phase %>
 
 <div>
-  <%= link_to "Edit this phase", edit_phase_path(@phase) %> |
-  <%= link_to "Back to phases", phases_path %>
+  <%= link_to "Edit this phase", edit_project_phase_path(@project, @phase) %> |
+  <%= link_to "Back to phases", project_phases_path %>
 
-  <%= button_to "Destroy this phase", @phase, method: :delete %>
+  <%= button_to "Destroy this phase", [@project, @phase], method: :delete %>
 </div>

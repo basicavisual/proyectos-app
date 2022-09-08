@@ -5,6 +5,7 @@
 <br>
 
 <div>
-  <%= link_to "Show this phase", @phase %> |
-  <%= link_to "Back to phases", phases_path %>
+  <%= link_to "Show this phase", project_phase_path(@project, @phase) %> |
+  <%= link_to "Back to phases", project_phases_path(@project) %>
+  
 </div>

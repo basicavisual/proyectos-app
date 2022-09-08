@@ -1,9 +1,10 @@
 class PhasesController < ApplicationController
+  before_action :get_project
   before_action :set_phase, only: %i[ show edit update destroy ]
 
   # GET /phases or /phases.json
   def index
-    @phases = Phase.all
+    @phases =  @project.phases
   end
 
   # GET /phases/1 or /phases/1.json
@@ -12,20 +13,19 @@ class PhasesController < ApplicationController
 
   # GET /phases/new
   def new
-    @phase = Phase.new
+    @phase = @project.phases.build
   end
-
   # GET /phases/1/edit
   def edit
   end
 
   # POST /phases or /phases.json
   def create
-    @phase = Phase.new(phase_params)
+    @phase = @project.phases.build(phase_params)
 
     respond_to do |format|
       if @phase.save
-        format.html { redirect_to phase_url(@phase), notice: "Phase was successfully created." }
+        format.html { redirect_to project_phases_path(@project), notice: "Phase was successfully created." }
         format.json { render :show, status: :created, location: @phase }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -38,7 +38,7 @@ class PhasesController < ApplicationController
   def update
     respond_to do |format|
       if @phase.update(phase_params)
-        format.html { redirect_to phase_url(@phase), notice: "Phase was successfully updated." }
+        format.html { redirect_to project_phase_path(@project), notice: "Phase was successfully updated." }
         format.json { render :show, status: :ok, location: @phase }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -52,19 +52,23 @@ class PhasesController < ApplicationController
     @phase.destroy
 
     respond_to do |format|
-      format.html { redirect_to phases_url, notice: "Phase was successfully destroyed." }
+      format.html { redirect_to project_phases_path(@project), notice: "Phase was successfully destroyed." }
       format.json { head :no_content }
     end
   end
 
   private
     # Use callbacks to share common setup or constraints between actions.
+    def get_project
+      @project = Project.find(params[:project_id])
+    end
+
     def set_phase
-      @phase = Phase.find(params[:id])
+      @phase = @project.phases.find(params[:id])
     end
 
     # Only allow a list of trusted parameters through.
     def phase_params
-      params.require(:phase).permit(:name, :end_date)
+      params.require(:phase).permit(:name, :end_date, :project_id)
     end
 end
